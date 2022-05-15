@@ -16,7 +16,7 @@ import {
   Skeleton,
   SkeletonText,
 } from "@chakra-ui/react";
-import { FaStar, FaArrowLeft } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { BsArrowLeft } from "react-icons/bs";
 import { useParams, useNavigate } from "react-router-dom";
 import useFetch from "./useFetch";
