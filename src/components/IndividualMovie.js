@@ -29,6 +29,8 @@ function IndividualMovie() {
   const navigate = useNavigate();
   const { movies: movie, isLoading, error } = useFetch(`&i=${id}`);
 
+  console.log(movie);
+
   if (error.show) {
     <VStack>
       <Badge p="4" colorScheme="yellow">
@@ -49,17 +51,20 @@ function IndividualMovie() {
     Plot: plot,
     Released: released,
     imdbRating,
+    Metascore: metascore,
+    Awards: awards,
+    BoxOffice: boxoffice,
   } = movie;
 
   useEffect(() => {
-    window.location.reload();
+    window.scrollTo(0, 0);
   }, [movie]);
 
   return (
     <Stack m="8" direction="column" justifyContent="center" alignItems="center">
       <Icon
         as={BsArrowLeft}
-        ml={{ lg: "13vw" }}
+        ml={{ md: "7vw", lg: "13vw" }}
         mb="4"
         w={6}
         h={6}
@@ -94,7 +99,7 @@ function IndividualMovie() {
             <Skeleton isLoaded={!isLoading}>
               <Heading fontWeight="bold">{title}</Heading>
             </Skeleton>
-            <SkeletonText isLoaded={!isLoading} noOfLines={4} spacing={4}>
+            <SkeletonText isLoaded={!isLoading} noOfLines={5} spacing={4}>
               <HStack textColor="gray.400">
                 <Text>{genre}</Text>
                 <Spacer />
@@ -108,6 +113,12 @@ function IndividualMovie() {
               <HStack textColor="gray.400">
                 <Text>imdb : {imdbRating}</Text>
                 <Icon as={FaStar} color="gold" />
+              </HStack>
+              <HStack textColor="gray.400">
+                <Text>
+                  Metascore : {metascore}
+                  {metascore === "N/A" || " / 100"}
+                </Text>
               </HStack>
             </SkeletonText>
           </Box>
@@ -135,28 +146,15 @@ function IndividualMovie() {
               <Text my="2">{plot}</Text>
             </SkeletonText>
           </Box>
-          <SkeletonText
-            isLoaded={!isLoading}
-            h="20px"
-            noOfLines={3}
-            spacing={4}
-          >
-            <HStack
-              pb="4"
-              divider={<StackDivider />}
-              justifyContent="space-evenly"
-            >
-              {isLoading ||
-                movie.Ratings.map((rating) => {
-                  const { Source: source, Value: value } = rating;
-                  return (
-                    <VStack key={source}>
-                      <Text>{source}</Text>
-                      <Text>{value}</Text>
-                    </VStack>
-                  );
-                })}
-            </HStack>
+          <SkeletonText isLoaded={!isLoading} noOfLines={2} spacing={4}>
+            <Grid templateColumns="1fr 2fr" my="2">
+              <Text fontWeight="semibold">Awards : </Text>
+              <Text>{awards}</Text>
+            </Grid>
+            <Grid templateColumns="1fr 2fr" my="2">
+              <Text fontWeight="semibold">Box Office : </Text>
+              <Text>{boxoffice}</Text>
+            </Grid>
           </SkeletonText>
         </VStack>
       </SimpleGrid>
