@@ -52,7 +52,7 @@ function IndividualMovie() {
   } = movie;
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.location.reload();
   }, [movie]);
 
   return (
