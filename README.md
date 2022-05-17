@@ -1,3 +1,13 @@
+# Live Demo
+
+https://moviedb-rajkp10.netlify.app
+
+# Tools Used
+
+This website is built using ReactJS and Chakra UI.
+Moreover, OMDB public API is used.
+Website also supports Dark Mode.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
