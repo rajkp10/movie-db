@@ -8,6 +8,10 @@ This website is built using ReactJS and Chakra UI.
 Moreover, OMDB public API is used.
 Website also supports Dark Mode.
 
+# Preview
+
+![movie-db](https://user-images.githubusercontent.com/96880670/190869425-d57416c9-12c6-4011-a6a9-1d9c9d3bfd73.jpg)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
